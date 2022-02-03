@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgastal- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 05:02:38 by fgastal-          #+#    #+#             */
-/*   Updated: 2022/01/29 05:25:30 by fgastal-         ###   ########.fr       */
+/*   Created: 2022/01/26 13:24:58 by fgastal-          #+#    #+#             */
+/*   Updated: 2022/01/28 23:47:07 by fgastal-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 
-void	ft_putchar(char a)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	write(1, &a, 1);
+	unsigned int	x;
+
+	x = 0;
+	while (x < n && src[x] != '\0')
+	{
+		dest[x] = src[x];
+		x++;
+	}
+	while (x < n)
+	{
+		dest[x] = '\0';
+		x++;
+	}
+	return (dest);
 }
 
-void	ft_putnbr(int nb)
+/*
+int	main()
 {
-	if (nb == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
-	}
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb < 10)
-	{
-		ft_putchar(nb + '0');
-		return ;
-	}
-	else
-		ft_putnbr(nb / 10);
-	ft_putnbr(nb % 10);
-}
-
-/*void	ft_putnbr(int nb);
-
-int	main(void)
-{
-	ft_putnbr(153);
+	char src[8] = "source";
+	char dest['\n'];
+	ft_strncpy(dest, src, 4);
+	printf("%s\n", dest);
 	return (0);
-}*/
+}
+*/

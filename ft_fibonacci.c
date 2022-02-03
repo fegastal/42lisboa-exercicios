@@ -1,49 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgastal- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 05:02:38 by fgastal-          #+#    #+#             */
-/*   Updated: 2022/01/29 05:25:30 by fgastal-         ###   ########.fr       */
+/*   Created: 2022/01/31 09:42:48 by fgastal-          #+#    #+#             */
+/*   Updated: 2022/01/31 14:09:48 by fgastal-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char a)
+int	ft_fibonacci(int index)
 {
-	write(1, &a, 1);
-}
+	int	aux;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	if (index == 0)
+		return (0);
+	else if (index == 1)
+		return (1);
+	else if (index > 1)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
-	}
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb < 10)
-	{
-		ft_putchar(nb + '0');
-		return ;
+		aux = ft_fibonacci(index - 1) + ft_fibonacci(index - 2);
+		return (aux);
 	}
 	else
-		ft_putnbr(nb / 10);
-	ft_putnbr(nb % 10);
+		return (-1);
 }
-
-/*void	ft_putnbr(int nb);
-
-int	main(void)
-{
-	ft_putnbr(153);
-	return (0);
-}*/
